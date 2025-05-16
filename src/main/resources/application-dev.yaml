@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: pdms_core
+  banner:
+    location: banner.txt
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:oracle:thin:@//10.252.116.83:1521/pdmsdb
+    username: pdms
+    password: HkAlF!pdmsDev()2o25
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+    driver-class-name: oracle.jdbc.OracleDriver
+  data:
+    redis:
+      host: 10.253.240.105
+      port: 6379
+      password: aloaluale
+      queue:
+        campain-noti: cmpain-noti-queue
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+    show-sql: true
+server:
+  servlet:
+    context-path: /pdms-core
+
+app:
+  sso-default: Lotte@123456
+  schedule:
+    campain-noti:
+      cron: 5 6 * * * *
+      time-zone: Asia/Ho_Chi_Minh
+external:
+  esb:
+    base-url: http://10.252.116.83:7099/pdms-api
+    credential:
+      user: pdms
+      pass: testpass
+    services:
+      notification:
+        email: /email
+        zns: /zns
+        sms: /sms
+jwt:
+  secret: 9c76b863bbc24c2a921ab9c2e64535e99a497a58c92890e34f631b7e25c90cfa
+  access-token-expiration: 1800000
+  refresh-token-expiration: 604800000
+
+minio:
+  url: http://10.252.117.23:9000
+  access-key: efinance-be
+  secret-key: efinance-be-secret
+  bucket:
+    name: e-finance-be
+sso:
+  base-url: https://sso.dev.lottefn.vn
+  client-id: LFH-OidC
+  client-secrect: dZ7nIfGarU5S4TYT90l8DqEIePOfotaf
+  realm: s-lfh
+  service:
+    check-token: /protocol/openid-connect/token/introspect
