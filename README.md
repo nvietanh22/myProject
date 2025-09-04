@@ -22,3 +22,5 @@ For example:
 
 After run this script you can choose: generate sql script or not and type the field of module you want develop.
 
+wifiaddress: 3c:a6:f6:68:3f:8e
+4e:d5:7c:df:e7:95
